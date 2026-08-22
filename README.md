@@ -24,10 +24,5 @@ Her proje kendi dizininde kendi `README.md` ve `requirements.txt` dosyasıyla, t
 çalıştırılabilir. *Each project is self-contained in its own folder with its own README and
 requirements — run it on its own.*
 
-## İlkeler / Principles
-- **Yerel ve özel** — belgeler bilgisayarından çıkmaz.
-- **Göster, gerektiği kadar anlat, dur** — okuyucuya güven.
-- **Dürüst** — kavram kanıtıysa öyle söyleriz; sınırları saklamayız.
-
 ## Lisans / License
 MIT — bkz. [`LICENSE`](LICENSE).
