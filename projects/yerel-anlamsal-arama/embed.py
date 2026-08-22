@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Generated with Claude Opus 4.8 (Anthropic). Review before use.
+# Bu dosya Claude Opus 4.8 (Anthropic) ile üretilmiştir; kullanmadan önce gözden geçirin.
 """Phase 2 (embedding) — bge-m3 (multilingual) via a local Ollama.
 
 Proven in experiments/tr-embed-ab: bge-m3 DIRECT on Turkish = 100% P@1, no

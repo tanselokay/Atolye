@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Generated with Claude Opus 4.8 (Anthropic). Review before use.
+# Bu dosya Claude Opus 4.8 (Anthropic) ile üretilmiştir; kullanmadan önce gözden geçirin.
 """Build a PUBLIC realistic Turkish corpus from Wikipedia to validate the finder
 at scale (no private data). Writes .docx files + a queries.json of PARAPHRASED
 queries (that avoid the title word, to test semantic recall, incl. confusable pairs).

@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Generated with Claude Opus 4.8 (Anthropic). Review before use.
+# Bu dosya Claude Opus 4.8 (Anthropic) ile üretilmiştir; kullanmadan önce gözden geçirin.
 """Turkish relative-time parsing for date-filtered search.
 
 Turns phrases like "geçen hafta", "bu ay", "dün", "geçen yıl", "son 3 gün",

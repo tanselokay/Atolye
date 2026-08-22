@@ -1,5 +1,7 @@
 # Yerel anlamsal arama · Local semantic search
 
+> _Generated with Claude Opus 4.8 (Anthropic) · Bu belge Claude Opus 4.8 ile üretildi._
+
 Belgelerini **anlamıyla** bul — yerel ve özel. `.docx`, `.pptx`, `.xmind` dosyalarını
 bilgisayarında dizinler; Türkçe doğal cümleyle ararsın, hiçbir şey buluttan geçmez.
 

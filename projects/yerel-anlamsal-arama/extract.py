@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Generated with Claude Opus 4.8 (Anthropic). Review before use.
+# Bu dosya Claude Opus 4.8 (Anthropic) ile üretilmiştir; kullanmadan önce gözden geçirin.
 """Phase 1 — extraction.
 
 Pull readable text + core metadata out of Microsoft .docx and .pptx files.

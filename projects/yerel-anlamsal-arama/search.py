@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Generated with Claude Opus 4.8 (Anthropic). Review before use.
+# Bu dosya Claude Opus 4.8 (Anthropic) ile üretilmiştir; kullanmadan önce gözden geçirin.
 """Phase 3 (retrieval) — hybrid search over the SQLite index.
 
 query = semantic (bge-m3 cosine)  ⊕  keyword (FTS5 bm25)  ⊕  date filter

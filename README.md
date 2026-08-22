@@ -1,6 +1,8 @@
 # Atölye
 
-**Yapay zekayla marifet — pratik, yerel, herkese.** Atölye, [demle.me](https://demle.me)
+> _Generated with Claude Opus 4.8 (Anthropic) · Bu belge Claude Opus 4.8 ile üretildi._
+
+**Yapay zekayı kurcala — pratik, yerel, herkes için.** Atölye, [demle.me](https://demle.me)
 ailesinden bir *yapımcı günlüğü*: bir sorunu (ya da merakı) anlatır, denediklerimi ve işe
 yarayanı gösterir, sen de kurabilesin diye kodu bırakır. Her sayı bir hikâye; her hikâyenin
 altında çalışan, **yerel ve özel** bir şey.

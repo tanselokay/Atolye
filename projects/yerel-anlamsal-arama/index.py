@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Generated with Claude Opus 4.8 (Anthropic). Review before use.
+# Bu dosya Claude Opus 4.8 (Anthropic) ile üretilmiştir; kullanmadan önce gözden geçirin.
 """Build the index: folder of .docx/.pptx -> SQLite (chunks + vectors + FTS5).
 
 Usage: python index.py <folder> [db_path]

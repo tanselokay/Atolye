@@ -1,3 +1,5 @@
+# Generated with Claude Opus 4.8 (Anthropic). Review before use.
+# Bu dosya Claude Opus 4.8 (Anthropic) ile üretilmiştir.
 # Yerel anlamsal arama — Python bağımlılıkları / Python dependencies
 # (Gerisi standart kütüphane. bge-m3, harici olarak Ollama ile çalışır — README'ye bakın.)
 # (Everything else is standard library. bge-m3 runs externally via Ollama — see README.)

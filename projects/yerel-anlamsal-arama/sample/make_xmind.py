@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Generated with Claude Opus 4.8 (Anthropic). Review before use.
+# Bu dosya Claude Opus 4.8 (Anthropic) ile üretilmiştir; kullanmadan önce gözden geçirin.
 """Synthetic .xmind test files — both formats (Zen content.json + XMind 8 content.xml),
 as Turkish book-summary mindmaps like the user's corpus. Gitignored."""
 import json

@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Generated with Claude Opus 4.8 (Anthropic). Review before use.
+# Bu dosya Claude Opus 4.8 (Anthropic) ile üretilmiştir; kullanmadan önce gözden geçirin.
 """Phase 3 (storage) — one local SQLite file: chunks + vectors + FTS5 + dates.
 
 Zero-ops, single-file, fully local. Vectors are stored as float32 blobs and

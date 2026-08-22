@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Generated with Claude Opus 4.8 (Anthropic). Review before use.
+# Bu dosya Claude Opus 4.8 (Anthropic) ile üretilmiştir; kullanmadan önce gözden geçirin.
 """Phase 2 (chunking) — split extracted units into embed-sized pieces.
 
 Units are already meaningful (a heading section, a slide, a table). Most fit in
