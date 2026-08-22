@@ -23,18 +23,42 @@ near-identical files.*
 - **Ara / Search** — anlamsal ⊕ anahtar sözcük ⊕ tarih; RRF ile birleşir, **anlam öncelikli**.
   Türkçe göreli zaman ifadelerini anlar: *geçen hafta, dün, geçen ay, ağustos…*
 
-## Gereksinimler / Requirements
-- **Python 3.9+**
-- **[Ollama](https://ollama.com)** çalışır durumda + `bge-m3` modeli:
+## Başlamadan / Before you start
+Hiçbir ön bilgi varsaymıyoruz. Sırayla:
+- **Python 3.9+** — yoksa [python.org](https://www.python.org/downloads/)'dan kur.
+  Doğrula: `python3 --version` (Windows: `py --version`).
+- **[Ollama](https://ollama.com)** — kur, sonra modeli indir (bir kez, ~1,2 GB):
   ```
   ollama pull bge-m3
   ```
-- Python paketleri: `requirements.txt` (python-docx, python-pptx).
+- **Git** — *isteğe bağlı.* Kodu Git ile **veya** ZIP indirerek alabilirsin (aşağıda).
+- Ayrıca: bir **terminal** (Terminal / PowerShell / Komut İstemi), **internet** ve ~**2 GB boş disk**.
+- Python paketleri (python-docx, python-pptx) bir sonraki adımda kurulur.
+
+*No prior knowledge assumed. You need Python 3.9+ ([python.org](https://www.python.org/downloads/)),
+Ollama ([ollama.com](https://ollama.com)) with `ollama pull bge-m3`, a terminal, internet, and ~2 GB
+free disk. **Git is optional** — get the code with Git or a ZIP (below).*
 
 > Ollama başka bir makinedeyse, adresini `ATOLYE_OLLAMA` ile ver (varsayılan
-> `http://localhost:11434`). Gömücü modeli `ATOLYE_EMBED` ile değiştirebilirsin (varsayılan `bge-m3`).
+> `http://localhost:11434`). Vektör modelini `ATOLYE_EMBED` ile değiştirebilirsin (varsayılan `bge-m3`).
 
 ---
+
+## Kodu al / Get the code
+Sadece bu projeyi al (tüm depoyu değil). İki yol:
+
+**Git yoksa (en kolay):** GitHub'da [depoyu aç](https://github.com/tanselokay/Atolye) →
+yeşil **Code → Download ZIP** → aç → içindeki `projects/yerel-anlamsal-arama` klasörünü kullan.
+
+**Git varsa:**
+```bash
+git clone --filter=blob:none --sparse https://github.com/tanselokay/Atolye.git
+git -C Atolye sparse-checkout set projects/yerel-anlamsal-arama
+cd Atolye/projects/yerel-anlamsal-arama
+```
+
+*No Git needed: download the repo ZIP from GitHub and use the `projects/yerel-anlamsal-arama` folder.
+With Git: the sparse-checkout above fetches only this project.*
 
 ## Kurulum / Setup
 
@@ -109,6 +133,17 @@ kontrolü sağlar; sonra birleşir. Okuma sırası ve ayrıntılar için sayın�
 - Yalnızca metin katmanı olan dosyalar — **taranmış/görsel belgeler için OCR yok**.
 - Anahtar sözcük eşleşmesi yalnızca kesin terimlerde (kod, tarih, tırnakla) devreye girer;
   doğal cümlelerde anlam önceliklidir.
+
+## Güncelleme ve ayarlama / Updating & customizing
+- **Güncelle:** `git pull` (ZIP indirdiysen yeni ZIP'i indir). Verilerin — belgelerin, `*.db`,
+  indirilen model — depo dışında; güncelleme onlara dokunmaz.
+- **Ayarla, kodu değiştirme:** farklı bir Ollama adresi veya model için ortam değişkeni ver
+  (`ATOLYE_OLLAMA`, `ATOLYE_EMBED`). İzlenen dosyaları düzenlemezsin, `git pull` temiz kalır.
+- **Kodu değiştireceksen:** fork'la ya da bir dalda çalış; yoksa `git pull` çakışabilir.
+
+*Update with `git pull` (your data lives outside the repo, untouched). Configure via the
+`ATOLYE_OLLAMA` / `ATOLYE_EMBED` environment variables instead of editing tracked files, so pulls
+stay clean. If you do edit the code, fork or use a branch to avoid merge conflicts.*
 
 ## Lisans / License
 MIT — bkz. deponun kökündeki `LICENSE`.
