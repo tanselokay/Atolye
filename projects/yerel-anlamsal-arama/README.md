@@ -47,8 +47,9 @@ free disk. **Git is optional** — get the code with Git or a ZIP (below).*
 ## Kodu al / Get the code
 Sadece bu projeyi al (tüm depoyu değil). İki yol:
 
-**Git yoksa (en kolay):** GitHub'da [depoyu aç](https://github.com/tanselokay/Atolye) →
-yeşil **Code → Download ZIP** → aç → içindeki `projects/yerel-anlamsal-arama` klasörünü kullan.
+**Git yoksa (en kolay):** ZIP'i doğrudan indir →
+**[yerel-anlamsal-arama.zip](https://github.com/tanselokay/Atolye/releases/download/v0.1/yerel-anlamsal-arama.zip)**
+→ aç → klasöre gir. (Git, GitHub hesabı, komut gerekmez.)
 
 **Git varsa:**
 ```bash
@@ -57,8 +58,8 @@ git -C Atolye sparse-checkout set projects/yerel-anlamsal-arama
 cd Atolye/projects/yerel-anlamsal-arama
 ```
 
-*No Git needed: download the repo ZIP from GitHub and use the `projects/yerel-anlamsal-arama` folder.
-With Git: the sparse-checkout above fetches only this project.*
+*No Git needed: download **[yerel-anlamsal-arama.zip](https://github.com/tanselokay/Atolye/releases/download/v0.1/yerel-anlamsal-arama.zip)**
+directly, unzip, and open the folder. With Git: the sparse-checkout above fetches only this project.*
 
 ## Kurulum / Setup
 
