@@ -1,0 +1,5 @@
+# Yerel anlamsal arama — Python bağımlılıkları / Python dependencies
+# (Gerisi standart kütüphane. bge-m3, harici olarak Ollama ile çalışır — README'ye bakın.)
+# (Everything else is standard library. bge-m3 runs externally via Ollama — see README.)
+python-docx>=1.1
+python-pptx>=0.6

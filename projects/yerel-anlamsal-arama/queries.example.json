@@ -1,0 +1,8 @@
+[
+  {"query": "geçen haftaki toplantı notları", "expect": "toplanti", "today": "2026-08-22"},
+  {"query": "gecikmiş ödeme uyarısı", "expect": "fatura"},
+  {"query": "yıllık izin talebi", "expect": "izin"},
+  {"query": "kişisel veri koruma kuralları", "expect": "gizlilik"},
+  {"query": "gelecek yıl yatırım bütçesi", "expect": "butce"},
+  {"query": "geçen ay proje durum raporu", "expect": "proje_durum_raporu", "today": "2026-08-22"}
+]

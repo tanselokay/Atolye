@@ -1,0 +1,32 @@
+# --- data & indexes (never commit; may contain real document text) ---
+*.db
+*.sqlite
+*.sqlite3
+# generated / user documents
+*.docx
+*.pptx
+*.xmind
+*.doc
+*.ppt
+*.pdf
+# sample data produced by the generators (keep the generators, not their output)
+projects/*/sample/wiki/
+projects/*/sample/haritalar/
+projects/*/sample/*/
+projects/*/*_queries.json
+
+# --- python ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+
+# --- os / editor ---
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
