@@ -129,11 +129,40 @@ python validate.py atolye_finder.db queries.example.json
 (FTS5 + tarih/yazar/tür, Elasticsearch benzeri). Biri anlamı bulur, diğeri kesin terimi ve
 kontrolü sağlar; sonra birleşir. Okuma sırası ve ayrıntılar için sayının hikâyesine bak (demle.me).
 
+### Zaman ifadeleri / Time phrases
+"geçen hafta", "dün", "geçen ay", "ağustos", "son 3 gün" gibi ifadeler `timeparse.py` içinde
+**basit kurallarla** bir tarih aralığına çevrilir (hafta Pazartesi başlar; "geçen hafta" = önceki
+tam Pazartesi–Pazar). Bu aralık, dosyanın **oluşturma/değiştirme** tarihine göre bir **süzgeç**
+olarak uygulanır; model bu ifadeyi görmez — ifade sorgudan çıkarılır, kalanı anlamsal aramaya gider.
+Sınırlar: liste **sabittir** (tanınmayan ifade, süzgeç uygulanmadan geçer); belgede tarih yoksa
+dosya sisteminin tarihine düşülür (kopyalanmış dosyada yanıltıcı olabilir).
+
+*Relative-time phrases are parsed to a date range by simple rules in `timeparse.py` (week starts
+Monday; "last week" = the previous full Mon–Sun), then applied as a filter on each file's
+created/modified date. The model never sees the phrase — it's stripped from the query. Limits: the
+phrase list is fixed (an unrecognized phrase applies no filter); if a document has no embedded date,
+the filesystem date is used, which a copied file can make misleading.*
+
 ## Sınırlar / Limits
 - Küçük örneklemde ölçüldü; yön sağlam, kesin rakamlar küçük örneklem.
 - Yalnızca metin katmanı olan dosyalar — **taranmış/görsel belgeler için OCR yok**.
 - Anahtar sözcük eşleşmesi yalnızca kesin terimlerde (kod, tarih, tırnakla) devreye girer;
   doğal cümlelerde anlam önceliklidir.
+
+## Bunu nasıl büyütebilirsin / How you could grow it
+Bu bir kavram kanıtı. Kullanmayı düşünüyorsan, aynı fikri kendi ihtiyacına göre şu yönlerde
+genişletebilirsin:
+- **Ölçek için vektör indeksi (ANN).** Belge sayısı artınca kaba tarama yerine hızlı yaklaşık
+  indeks (ör. `sqlite-vec`, FAISS, hnswlib) — on binlerce belgede hızlı kalır.
+- **Kalıcı web arayüzü.** Klasörü yeniden aramak ve yeni belgeleri indekse eklemek için yerel bir
+  sayfa — her seferinde komut çalıştırmadan.
+- **Daha güçlü yerel model / sunucu.** Daha iyi ya da çok dilli bir gömme modeli; ekip için
+  paylaşılan tek bir yerel AI sunucusu.
+- **Üstveri çıkarım genişleticisi.** Belgeye özel alanlar (müşteri, proje kodu, tutar, sözleşme
+  tarihi…) çıkarıp aranabilir ve süzülebilir kıl.
+- **Erişim denetimi.** Kullanıcının yetkisi olmayan belgeleri sonuç listesinden ele (ekip/kurumsal
+  kullanım için).
+- **Artımlı güncelleme.** Değişen ya da yeni eklenen dosyaları otomatik yeniden indeksle (izleme).
 
 ## Güncelleme ve ayarlama / Updating & customizing
 - **Güncelle:** `git pull` (ZIP indirdiysen yeni ZIP'i indir). Verilerin — belgelerin, `*.db`,
