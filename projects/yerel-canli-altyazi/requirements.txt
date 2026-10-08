@@ -1,0 +1,14 @@
+# Generated with Claude (Anthropic). Review before use.
+# Apple Silicon Mac (M1 or later) only: mlx-whisper runs on the Apple GPU.
+# Python 3.13 (3.14 has no torch / sentencepiece wheels yet). Versions below are
+# the ones it was tested with.
+mlx-whisper==0.4.3        # speech to text: Whisper large-v3-turbo on the GPU
+silero-vad==6.2.1         # finds where speech starts and stops
+sounddevice==0.5.6        # live audio input (Loopback, a microphone)
+soxr==1.1.0               # converts the input to 16 kHz with a proper filter
+numpy==2.5.3
+torch==2.14.0             # NLLB draft translations, on the Apple GPU (MPS)
+transformers==5.16.1
+sentencepiece==0.2.2
+# Optional, only for the experimental CPU mode (stream.py --cpu); see DECISIONS.md.
+# faster-whisper==1.2.1
