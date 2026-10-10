@@ -2,7 +2,7 @@
 
 > _Generated with Claude (Anthropic) · Bu belge Claude (Anthropic) ile üretildi._
 
-Türkçe aşağıda. · *For English, see [English](#english).*
+Türkçe aşağıda. · *For English, see [English](#english).* · Kaynaklar / references: [Kaynaklar · References](#kaynaklar--references)
 
 ## Türkçe
 
@@ -333,3 +333,38 @@ These lessons matter more than the numbers if you try something similar yourself
 I did not try spontaneous speech, because the real voice read a script. I also did not test more than two people, overlapping speech, accents, noise, or other microphones. Long monologues, telling speakers apart (the captions show the language, not the person) and a real Zoom call were not part of this experiment. I did not run it on Windows, Linux, NVIDIA GPUs, or Macs with less memory. Anything over three minutes was not tested.
 
 The `--record` flag records everything that reaches the input until it is stopped with Ctrl-C. It prints the running length every minute. Recording a meeting has consent rules that vary by country.
+
+---
+
+## Kaynaklar · References
+
+- Whisper large-v3-turbo (OpenAI): https://huggingface.co/openai/whisper-large-v3-turbo
+- Whisper large-v3-turbo, Apple GPU sürümü (MLX Community) · Whisper large-v3-turbo, Apple GPU version (MLX Community): https://huggingface.co/mlx-community/whisper-large-v3-turbo
+- Whisper large-v3 (OpenAI): https://huggingface.co/openai/whisper-large-v3
+- NLLB-200 600M (Meta): https://huggingface.co/facebook/nllb-200-distilled-600M
+- Qwen3.8 27B (Alibaba, Qwen): https://ollama.com/library/qwen3.8
+- Qwen3.8 27B'nin küçültülmüş sürümü, batiai/qwen3.8-27b:iq4 · The smaller version of Qwen3.8 27B, batiai/qwen3.8-27b:iq4: https://ollama.com/batiai/qwen3.8-27b
+- Qwen3-ASR 1.7B (Alibaba, Qwen): https://huggingface.co/Qwen/Qwen3-ASR-1.7B
+- qwen-asr Python paketi · qwen-asr Python package: https://pypi.org/project/qwen-asr/
+- BuzzASR/turkish: https://huggingface.co/BuzzASR/turkish
+- turkmedstt/whisper-large-v3-turkish-general (TurkMedSTT): https://huggingface.co/turkmedstt/whisper-large-v3-turkish-general
+- ogulcanakca/faster-whisper-small-tr: https://huggingface.co/ogulcanakca/faster-whisper-small-tr
+- ysdede/whisper-small-turkish-0-ct2: https://huggingface.co/ysdede/whisper-small-turkish-0-ct2
+- Emre Akgül, Türkçe konuşmayı yazıya dökme sıralaması · Emre Akgül, Turkish transcription leaderboard: https://huggingface.co/spaces/EmreAkgul/Turkish-transcription-leaderboard
+- FLEURS konuşma veri seti (Google) · FLEURS speech dataset (Google): https://huggingface.co/datasets/google/fleurs
+- Omnilingual ASR (Meta): https://github.com/facebookresearch/omnilingual-asr
+- Piper, açık metinden sese programı · Piper, open text-to-speech program: https://github.com/rhasspy/piper
+- Thorsten-Voice, Thorsten Müller'in serbestçe kullanılabilen (CC0) Almanca ses kayıtları · Thorsten-Voice, Thorsten Müller's free-to-use (CC0) German voice recordings: https://github.com/thorstenMueller/Thorsten-Voice
+- Speechelo: https://speechelo.com
+- silero-vad (Silero): https://github.com/snakers4/silero-vad
+- faster-whisper (SYSTRAN): https://github.com/SYSTRAN/faster-whisper
+- python-soxr: https://github.com/dofuuz/python-soxr
+- Apple'ın Whisper dönüştürme betiği, mlx-examples/whisper/convert.py · Apple's Whisper conversion script, mlx-examples/whisper/convert.py: https://github.com/ml-explore/mlx-examples/blob/main/whisper/convert.py
+- Aya Expanse 8B (Cohere Labs): https://huggingface.co/CohereLabs/aya-expanse-8b
+- TranslateGemma (Google): https://ollama.com/library/translategemma
+- Opus-MT (Helsinki-NLP): https://github.com/Helsinki-NLP/Opus-MT
+- Zemberek-NLP: https://github.com/ahmetaa/zemberek-nlp
+- Ollama: https://ollama.com
+- Loopback (Rogue Amoeba): https://rogueamoeba.com/loopback/
+- BlackHole (Existential Audio): https://existential.audio/blackhole/
+- Bu projenin kodu ve ölçümleri · This project's code and measurements: https://github.com/tanselokay/Atolye
