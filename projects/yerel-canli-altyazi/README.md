@@ -35,16 +35,16 @@ and what is unknown: [`DECISIONS.md`](DECISIONS.md).*
 
 | | |
 |---|---|
-| **Bilgisayar** | Apple Silicon Mac (M1 ve sonrası). Denendiği makine: M4 Max, 64 GB. Modeller birlikte ~22 GB GPU belleği kullanır. |
+| **Bilgisayar** | Apple Silicon Mac (M1 ve sonrası). Denendiği makine: M4 Max, 64 GB. Modeller birlikte yaklaşık 22 GB GPU belleği kullanır. |
 | **Python** | **3.13** — 3.14 için `torch` / `sentencepiece` paketleri henüz yok. |
 | **ffmpeg** | `brew install ffmpeg` |
 | **[Ollama](https://ollama.com)** | çeviri ve not modeli için |
 | **Ses yönlendirme** | toplantının sesini uygulamaya vermek için: [Loopback](https://rogueamoeba.com/loopback/) (ücretli; denendi) ya da [BlackHole](https://existential.audio/blackhole/) (ücretsiz; denenmedi) |
-| **Disk** | ~22 GB (modeller bir kez iner) |
+| **Disk** | yaklaşık 22 GB (modeller bir kez indirilir) |
 
-*Apple Silicon Mac (tested on an M4 Max, 64 GB; the models use ~22 GB of GPU memory together),
+*Apple Silicon Mac (tested on an M4 Max, 64 GB; the models use about 22 GB of GPU memory together),
 Python 3.13, ffmpeg, Ollama, a way to route the meeting's audio to the app — Loopback (paid,
-tested) or BlackHole (free, not tested) — and ~22 GB of disk for the models.*
+tested) or BlackHole (free, not tested) — and about 22 GB of disk for the models.*
 
 ## Kur / Set up
 
@@ -57,13 +57,13 @@ ollama pull batiai/qwen3.8-27b:iq4
 
 Whisper ve NLLB ilk çalıştırmada kendiliğinden iner. *Whisper and NLLB download on the first run.*
 
-> Çeviri modeli, Qwen3.8 27B'nin topluluk tarafından yüklenmiş bir IQ4_XS sıkıştırması
-> (Apache 2.0). Resmî sürümü tercih edersen: `ollama pull qwen3.8:27b-q4_K_M` ve
-> `--model qwen3.8:27b-q4_K_M`. Bizim toplantıda gün/saat hatası biraz daha fazlaydı.
+> Çeviri modeli, Qwen3.8 27B'nin topluluk tarafından hazırlanmış küçültülmüş (IQ4_XS)
+> bir sürümü (Apache 2.0). Resmî sürümü tercih edersen: `ollama pull qwen3.8:27b-q4_K_M` ve
+> `--model qwen3.8:27b-q4_K_M`. Benim denediğim toplantıda gün ve saat hatası biraz daha fazlaydı.
 >
-> *The translation model is a community-uploaded IQ4_XS quant of Qwen3.8 27B (Apache 2.0).
+> *The translation model is a smaller (IQ4_XS) version of Qwen3.8 27B prepared by the community (Apache 2.0).
 > For the official one: `ollama pull qwen3.8:27b-q4_K_M` and `--model qwen3.8:27b-q4_K_M`;
-> on our meeting it made a few more day/time errors.*
+> on my test meeting it made a few more day and time errors.*
 
 ## Çalıştır / Run
 
