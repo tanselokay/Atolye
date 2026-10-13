@@ -46,13 +46,12 @@ bitmiş demle.me değil.
 *Paste a builder prompt into an AI assistant; it asks a few questions, then generates your version
 with the hard-won rules baked in. A starting skeleton you then shape.*
 
-## Işıkta bir imza / A signature in the light
+## Işık ile imza! / A signature in the light
 
-Her kapak **sabah ışığında** üretilir — yumuşak, altın, günün ilk ışığı. Varsayılan değil: adım
-*Tansel*, tan vaktinin ışığı demek, kapaklar onu taşır (`prompts/03-cover.md`). Otomatik bir
-sistem bile kişisel bir iz taşıyabilir. Kendininkine sana ait bir imza ver.
-*Every cover is in morning light — my name, Tansel, means the light of daybreak. An automated
-system can still hold a personal mark. Give yours a signature that's yours.*
+demle.me’de üretilen bültenlerin kapakları ismimin *“Tansel”* anlamını bir imza gibi taşır —
+sabahın ilk ışıkları (`prompts/03-cover.md`). Sen de kendininkini verebilirsin?
+*On demle.me, the newsletter covers carry the meaning of my name, Tansel, like a signature — the
+first light of morning. You can give yours your own.*
 
 ## Bu depoda ne var / What's in this repo
 
