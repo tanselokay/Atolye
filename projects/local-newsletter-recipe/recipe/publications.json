@@ -1,0 +1,152 @@
+{
+  "_comment": [
+    "demle.me titles produced by the curation pipeline. AiPulse is also built into",
+    "publication.py; the entry here is the one that is read, so the title can be repointed",
+    "without a code change. Atolye is deliberately absent: it is hand-authored and the front",
+    "page renders it from a static description.",
+    "A malformed file is IGNORED rather than fatal (this is read on the publish path), so a",
+    "typo here costs the second title, never the daily issue."
+  ],
+  "publications": [
+    {
+      "key": "aipulse",
+      "title": "AiPulse",
+      "base": "/aipulse",
+      "curation_dir": "data/curation",
+      "site_dir": "demle.me/aipulse",
+      "feeds": [
+        [
+          "tr",
+          "Türkçe",
+          "/aipulse/feed.xml"
+        ],
+        [
+          "en",
+          "English",
+          "/aipulse/feed.en.xml"
+        ]
+      ],
+      "target_items": 12,
+      "cadence": "daily",
+      "port": 8765,
+      "logo_html": "Ai<span>Pulse</span>",
+      "subtitle": "Yapay Zeka Bülteni",
+      "subtitle_en": "AI Newsletter",
+      "lang_storage_key": "aipulse_lang",
+      "feed_title": "AiPulse — yapay zeka nabzı",
+      "feed_title_en": "AiPulse — the AI pulse",
+      "feed_subtitle": "ham değil, demlenmiş",
+      "feed_subtitle_en": "brewed, not raw",
+      "tagline": "yapay zeka nabzı — ham değil, demlenmiş",
+      "tagline_en": "the AI pulse — brewed, not raw",
+      "archive_description": "Yapay zeka bülteni AiPulse'un tüm sayıları."
+    },
+    {
+      "key": "iyigiden",
+      "title": "İyi Giden Şeyler",
+      "base": "/iyigiden",
+      "curation_dir": "data/iyigiden/curation",
+      "site_dir": "demle.me/iyigiden",
+      "feeds": [
+        [
+          "tr",
+          "Türkçe",
+          "/iyigiden/feed.xml"
+        ],
+        [
+          "en",
+          "English",
+          "/iyigiden/feed.en.xml"
+        ]
+      ],
+      "target_items": 11,
+      "cadence": "weekly",
+      "port": 8766,
+      "logo_html": "İyi<span>Giden</span>",
+      "subtitle": "Dünyada iyi giden şeyler",
+      "subtitle_en": "Good things happening in the world",
+      "lang_storage_key": "iyigiden_lang",
+      "feed_title": "İyi Giden Şeyler — dünyadan iyi haberler",
+      "feed_title_en": "Good Things — good news from around the world",
+      "feed_subtitle": "umut değil, sonuç",
+      "feed_subtitle_en": "outcomes, not hopes",
+      "pillars": [
+        [
+          "health",
+          "Sağlık",
+          "Health"
+        ],
+        [
+          "science",
+          "Bilim",
+          "Science"
+        ],
+        [
+          "technology",
+          "Teknoloji",
+          "Technology"
+        ],
+        [
+          "energy",
+          "Enerji",
+          "Energy"
+        ],
+        [
+          "environment",
+          "Çevre",
+          "Environment"
+        ],
+        [
+          "conservation",
+          "Doğa Koruma",
+          "Conservation"
+        ],
+        [
+          "society",
+          "Toplum",
+          "Society"
+        ],
+        [
+          "education",
+          "Eğitim",
+          "Education"
+        ]
+      ],
+      "kritik": false,
+      "theme": {
+        "rule": "#3f9db0",
+        "ink": "#0b5d6e",
+        "wordmark": "#1b7f93",
+        "ink_dark": "#7fd4e6",
+        "border": "#d5e6ea",
+        "border2": "#cfe1e6",
+        "panel": "#f4fafb",
+        "panel_head": "#e4f1f5",
+        "cue": "#e9f5f8",
+        "cue_ink": "#10262b",
+        "cue_dark": "#16303a",
+        "cue_dark_ink": "#dceef3",
+        "pill_ink": "#2f6b76"
+      },
+      "tagline": "dünyada iyi giden şeyler — seçilmiş, çevrilmiş",
+      "tagline_en": "what is going right in the world — selected and translated",
+      "archive_description": "Dünyada iyi giden şeylerin bülteni — tüm sayılar.",
+      "feed_granularity": "item",
+      "english_urls": true,
+      "title_en": "Good Things",
+      "archive_description_en": "A weekly newsletter of things going right around the world — every issue.",
+      "models": [
+        [
+          "Qwen3.8-27B",
+          "https://huggingface.co/Qwen",
+          "seçim ve metin"
+        ],
+        [
+          "bge-m3",
+          "https://huggingface.co/BAAI/bge-m3",
+          "çok dilli eşleştirme"
+        ]
+      ]
+    }
+  ]
+}

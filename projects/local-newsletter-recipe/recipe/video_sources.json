@@ -1,0 +1,357 @@
+{
+  "_comment": [
+    "Channels polled by scripts/video_discover for notable AI videos.",
+    "Add a source by appending a handle — the YouTube @name from its channel URL.",
+    "The channel_id is resolved automatically on first poll and cached back into this",
+    "file, so you never have to look one up. Set enabled:false to mute a source without",
+    "losing it. 'lane' groups the page's filter chips: news / robotics / fun / explainer.",
+    "This is DISCOVERY ONLY — it does not touch the newsletter or the publish path.",
+    "NOTE: LinkedIn pages cannot be polled (no RSS, auth-walled, blocks scraping) — the way",
+    "to follow a LinkedIn creator here is to find their YouTube channel and add it below."
+  ],
+  "sources": [
+    {
+      "name": "OpenAI",
+      "handle": "openai",
+      "lane": "news",
+      "enabled": true,
+      "channel_id": "UCXZCJLdBC09xxGZ6gcdrc6A"
+    },
+    {
+      "name": "Anthropic",
+      "handle": "anthropic-ai",
+      "lane": "news",
+      "enabled": true,
+      "channel_id": "UCrDwWp7EBBv4NwvScIpBDOA"
+    },
+    {
+      "name": "Google DeepMind",
+      "handle": "googledeepmind",
+      "lane": "news",
+      "enabled": true,
+      "channel_id": "UCP7jMXSY2xbc3KCAE0MHQ-A"
+    },
+    {
+      "name": "NVIDIA",
+      "handle": "nvidia",
+      "lane": "news",
+      "enabled": true,
+      "channel_id": "UCHuiy8bXnmK5nisYHUd1J5g"
+    },
+    {
+      "name": "Microsoft",
+      "handle": "microsoft",
+      "lane": "news",
+      "enabled": true,
+      "channel_id": "UCFtEEv80fQVKkD4h1PF-Xqw"
+    },
+    {
+      "name": "Meta AI",
+      "handle": "aiatmeta",
+      "lane": "news",
+      "enabled": true,
+      "channel_id": "UC5qxlwEKM7-5YZudb24l0bg"
+    },
+    {
+      "name": "IBM Technology",
+      "handle": "ibmtechnology",
+      "lane": "explainer",
+      "enabled": true,
+      "channel_id": "UCKWaEZ-_VweaEx1j62do_vQ"
+    },
+    {
+      "name": "Two Minute Papers",
+      "handle": "twominutepapers",
+      "lane": "explainer",
+      "enabled": true,
+      "channel_id": "UCbfYPyITQ-7l4upoX8nvctg"
+    },
+    {
+      "name": "Hugging Face",
+      "handle": "huggingface",
+      "lane": "explainer",
+      "enabled": true,
+      "channel_id": "UCHlNU7kIZhRgSbhHvFoy72w"
+    },
+    {
+      "name": "Mistral AI",
+      "handle": "mistralai",
+      "lane": "news",
+      "enabled": true,
+      "channel_id": "UCRaz_dquopKtb4ptswKcxTA"
+    },
+    {
+      "name": "Boston Dynamics",
+      "handle": "bostondynamics",
+      "channel_id": "UC7vVhkEfw4nOGp8TyDk7RcQ",
+      "lane": "robotics",
+      "enabled": true
+    },
+    {
+      "name": "Unitree Robotics",
+      "handle": "unitreerobotics",
+      "channel_id": "UCsMbp4V8oxzHCMdOUP-3oWw",
+      "lane": "robotics",
+      "enabled": true
+    },
+    {
+      "name": "Figure",
+      "handle": "figureai",
+      "channel_id": "UCYlq-KmwPjc1DtsGmthFqSQ",
+      "lane": "robotics",
+      "enabled": true
+    },
+    {
+      "name": "Agility Robotics",
+      "handle": "agilityrobotics",
+      "channel_id": "UCN-StetwWuVYf-MU2_NVj4A",
+      "lane": "robotics",
+      "enabled": true
+    },
+    {
+      "name": "Sanctuary AI",
+      "handle": "sanctuaryai",
+      "channel_id": "UC_d_dGoi2ztmAgiDwRh3uJw",
+      "lane": "robotics",
+      "enabled": true
+    },
+    {
+      "name": "Clone Robotics",
+      "handle": "clonerobotics",
+      "channel_id": "UCd0xLOw6No5IAsq3Y2-b0eA",
+      "lane": "robotics",
+      "enabled": true
+    },
+    {
+      "name": "Engineered Arts",
+      "handle": "engineeredartsltd",
+      "channel_id": "UCVIo_UX--1R03WE_U3I6xEA",
+      "lane": "robotics",
+      "enabled": true
+    },
+    {
+      "name": "Tesla",
+      "handle": "tesla",
+      "channel_id": "UC5WjFrtBdufl6CZojX3D8dQ",
+      "lane": "robotics",
+      "enabled": true
+    },
+    {
+      "name": "ColdFusion",
+      "handle": "coldfusion",
+      "channel_id": "UC4QZ_LsYcvcq7qOsOhpAX4A",
+      "lane": "news",
+      "enabled": true
+    },
+    {
+      "name": "Marques Brownlee",
+      "handle": "mkbhd",
+      "channel_id": "UCBJycsmduvYEL83R_U4JriQ",
+      "lane": "fun",
+      "enabled": false
+    },
+    {
+      "name": "Fireship",
+      "handle": "fireship",
+      "channel_id": "UCsBjURrPoezykLs9EqgamOA",
+      "lane": "fun",
+      "enabled": true
+    },
+    {
+      "name": "bycloud",
+      "handle": "bycloudAI",
+      "channel_id": "UCgfe2ooZD3VJPB6aJAnuQng",
+      "lane": "fun",
+      "enabled": true
+    },
+    {
+      "name": "Code Bullet",
+      "handle": "codebullet",
+      "channel_id": "UC0e3QhIYukixgh5VVpKHH9Q",
+      "lane": "fun",
+      "enabled": true
+    },
+    {
+      "name": "AI Explained",
+      "handle": "aiexplained-official",
+      "channel_id": "UCNJ1Ymd5yFuUPtn21xtRbbw",
+      "lane": "explainer",
+      "enabled": true
+    },
+    {
+      "name": "Matt Wolfe",
+      "handle": "mreflow",
+      "channel_id": "UChpleBmo18P08aKCIgti38g",
+      "lane": "fun",
+      "enabled": false
+    },
+    {
+      "name": "Wes Roth",
+      "handle": "wesroth",
+      "channel_id": "UCqcbQf6yw5KzRoDDcZ_wBSw",
+      "lane": "fun",
+      "enabled": false
+    },
+    {
+      "name": "AI Warehouse",
+      "handle": "AIWarehouse",
+      "lane": "fun",
+      "enabled": true,
+      "channel_id": "UCMT1Aw4R4nf_sFNDeuJqc6w"
+    },
+    {
+      "name": "Neural Viz",
+      "handle": "NeuralViz",
+      "lane": "fun",
+      "enabled": true,
+      "channel_id": "UCC84bgs01Qv2S7byU2rUYig"
+    },
+    {
+      "name": "Curious Refuge",
+      "handle": "curiousrefuge",
+      "lane": "fun",
+      "enabled": true,
+      "channel_id": "UClnFtyUEaxQOCd1s5NKYGFA"
+    },
+    {
+      "name": "Sebastian Lague",
+      "handle": "SebastianLague",
+      "lane": "fun",
+      "enabled": true,
+      "channel_id": "UCmtyQOKKmrMVaKuRXz02jbQ"
+    },
+    {
+      "name": "Corridor Crew",
+      "handle": "corridorcrew",
+      "lane": "fun",
+      "enabled": true,
+      "channel_id": "UCSpFnDQr88xCZ80N-X7t0nQ"
+    },
+    {
+      "name": "Computerphile",
+      "handle": "Computerphile",
+      "lane": "explainer",
+      "enabled": true,
+      "channel_id": "UC9-y-6csu5WGm29I7JiwpnA"
+    },
+    {
+      "name": "Simone Giertz",
+      "handle": "simonegiertz",
+      "lane": "fun",
+      "enabled": true,
+      "channel_id": "UC3KEoMzNz8eYnwBC34RaKCQ"
+    },
+    {
+      "name": "Mark Rober",
+      "handle": "MarkRober",
+      "lane": "radar",
+      "enabled": true,
+      "channel_id": "UCY1kMZp36IQSyNx_9h4mpCg"
+    },
+    {
+      "name": "Smarter Every Day",
+      "handle": "smartereveryday",
+      "lane": "radar",
+      "enabled": true,
+      "channel_id": "UC6107grRI4m0o2-emgoDnAA"
+    },
+    {
+      "name": "The Slow Mo Guys",
+      "handle": "TheSlowMoGuys",
+      "lane": "radar",
+      "enabled": true,
+      "channel_id": "UCUK0HBIBWgM2c4vsPhkYY4w"
+    },
+    {
+      "name": "Stuff Made Here",
+      "handle": "StuffMadeHere",
+      "lane": "radar",
+      "enabled": true,
+      "channel_id": "UCj1VqrHhDte54oLgPG4xpuQ"
+    },
+    {
+      "name": "Steve Mould",
+      "handle": "SteveMould",
+      "lane": "radar",
+      "enabled": true,
+      "channel_id": "UCEIwxahdLz7bap-VDs9h35A"
+    },
+    {
+      "name": "Veritasium",
+      "handle": "veritasium",
+      "lane": "radar",
+      "enabled": true,
+      "channel_id": "UCHnyfMqiRRG1u-2MsSQLbXA"
+    },
+    {
+      "name": "NileRed",
+      "handle": "NileRed",
+      "lane": "radar",
+      "enabled": true,
+      "channel_id": "UCFhXFikryT4aFcLkLw2LBLA"
+    },
+    {
+      "name": "Half as Interesting",
+      "handle": "HalfAsInteresting",
+      "lane": "radar",
+      "enabled": true,
+      "channel_id": "UCuCkxoKLYO_EQ2GeFtbM_bw"
+    },
+    {
+      "name": "MinuteEarth",
+      "handle": "MinuteEarth",
+      "lane": "radar",
+      "enabled": true,
+      "channel_id": "UCeiYXex_fwgYDonaTcSIk6w"
+    },
+    {
+      "name": "Casually Explained",
+      "handle": "CasuallyExplained",
+      "lane": "radar",
+      "enabled": true,
+      "channel_id": "UCr3cBLTYmIK9kY0F_OdFWFQ"
+    },
+    {
+      "name": "Pezzza's Work",
+      "handle": "PezzzasWork",
+      "lane": "fun",
+      "enabled": true,
+      "channel_id": "UCFR-QlAx0qFHN9-QmcrpHnQ"
+    },
+    {
+      "name": "Emergent Garden",
+      "handle": "EmergentGarden",
+      "lane": "fun",
+      "enabled": true,
+      "channel_id": "UCwBhBDsqiQflTMLy2epbQVw"
+    },
+    {
+      "name": "carykh",
+      "handle": "carykh",
+      "lane": "fun",
+      "enabled": true,
+      "channel_id": "UC9z7EZAbkphEMg0SP7rw44A"
+    },
+    {
+      "name": "3Blue1Brown",
+      "handle": "3blue1brown",
+      "lane": "explainer",
+      "enabled": true,
+      "channel_id": "UCYO_jab_esuFRV4b17AJtAw"
+    },
+    {
+      "name": "Welch Labs",
+      "handle": "WelchLabs",
+      "lane": "explainer",
+      "enabled": true,
+      "channel_id": "UConVfxXodg78Tzh5nNu85Ew"
+    },
+    {
+      "name": "Robert Miles",
+      "handle": "RobertMilesAI",
+      "lane": "explainer",
+      "enabled": true,
+      "channel_id": "UCLB7AzTwc6VFZrBsO2ucBMg"
+    }
+  ]
+}

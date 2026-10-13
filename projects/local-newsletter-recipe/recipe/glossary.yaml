@@ -1,0 +1,150 @@
+# AiPulse translation glossary — source term (any language) -> preferred Turkish.
+# Injected into the title-translation and critique prompts so the local model
+# renders jargon consistently and never leaves terms half-English or concatenated.
+# Extend freely; keys are matched case-insensitively as whole phrases.
+terms:
+  # semiconductors / hardware
+  "mature node": "olgun düğüm"
+  "process node": "üretim düğümü"
+  "wafer": "pul (wafer)"
+  "foundry": "döküm tesisi (foundry)"
+  "chip": "çip"
+  "fab": "fabrika (fab)"
+  # robotics / edge
+  "UAV": "İHA"
+  "UAV swarm": "İHA sürüsü"
+  "drone swarm": "dron sürüsü"
+  "edge AI": "uç yapay zeka"
+  "on-device": "cihaz üstü"
+  "tactile": "dokunsal"
+  # loanwords Turkish already spells the source way — the translator "helpfully"
+  # respells them phonetically and invents non-words (2026-09-23: "DNA orijami")
+  "origami": "origami"
+  "DNA origami": "DNA origami"
+  "plasmid": "plazmit"
+  "scaffold": "iskele"
+  # core ML
+  "backpropagation": "geri yayılım"
+  "inference": "çıkarım"
+  "fine-tuning": "ince ayar"
+  "pretraining": "ön eğitim"
+  "quantization": "niceleme"
+  # computer vision / pose
+  "landmark": "işaret noktası"
+  "body landmarks": "vücut işaret noktaları"
+  "pose landmarks": "vücut işaret noktaları"
+  "keypoint": "işaret noktası"
+  "keypoints": "işaret noktaları"
+  "embedding": "gömme"
+  "attention": "dikkat mekanizması"
+  "transformer": "transformer"
+  "neural network": "sinir ağı"
+  "deep learning": "derin öğrenme"
+  "machine learning": "makine öğrenmesi"
+  "reinforcement learning": "pekiştirmeli öğrenme"
+  "supervised learning": "gözetimli öğrenme"
+  "computer vision": "bilgisayarlı görü"
+  "natural language processing": "doğal dil işleme"
+  # LLM / agents
+  "large language model": "büyük dil modeli"
+  "LLM": "büyük dil modeli (LLM)"
+  "foundation model": "temel model"
+  "world model": "dünya modeli"
+  "reasoning model": "akıl yürütme modeli"
+  "prompt": "istem"
+  "prompt engineering": "istem mühendisliği"
+  "token": "token"
+  "context window": "bağlam penceresi"
+  "hallucination": "halüsinasyon"
+  "agent": "ajan"
+  "agentic": "ajansal"
+  "chatbot": "sohbet botu"
+  # NOTE: "handoff" between models = geçiş/aktarım, NEVER "devir" (that reads as era/epoch).
+  "handoff": "aktarım"
+  "handoffs": "aktarımlar"
+  "model handoff": "model geçişi (aktarım)"
+  "model handoffs": "model geçişleri"
+  "AI model handoffs": "modeller arası geçişler"
+  "KV cache": "anahtar-değer önbelleği (KV cache)"
+  "KV-cache": "anahtar-değer önbelleği (KV cache)"
+  # NOTE: "deployment" of AI/software = devreye alma/hayata geçirme, NEVER "dağıtım"
+  # (that reads as distribution/handing out).
+  "deploy": "devreye almak"
+  "deployed": "devreye alınan"
+  "deployment": "devreye alma"
+  "AI deployment": "yapay zekânın devreye alınması"
+  "model deployment": "modelin devreye alınması"
+  # data / practice
+  "dataset": "veri kümesi"
+  "benchmark": "kıyaslama"
+  "open-source": "açık kaynak"
+  "open-weight": "açık ağırlıklı"
+  "generative": "üretken"
+  # generic
+  "one-size-fits-all": "tek tip"
+  # UI / UX
+  "dropdown": "açılır liste"
+  "dropdown list": "açılır liste"
+  "dropdown menu": "açılır menü"
+  "checkbox": "onay kutusu"
+  "radio button": "seçenek düğmesi"
+  "form field": "form alanı"
+  # design
+  "design system": "tasarım sistemi"
+  "parametric design": "parametrik tasarım"
+  "prototype": "prototip"
+  # proper names — keep as-is / correct romanization (never translate these)
+  "OpenAI": "OpenAI"
+  "IPO": "halka arz (IPO)"
+  "壁仞科技": "Biren Technology"
+  "印奇": "Yin Qi"
+  "Moonshot": "Moonshot"
+  # security
+  "vulnerability": "güvenlik açığı"
+  "vulnerabilities": "güvenlik açıkları"
+  "security flaw": "güvenlik açığı"
+  "security flaws": "güvenlik açıkları"
+  "exploit": "istismar (exploit)"
+  "zero-day": "sıfır gün (zero-day)"
+  "patch": "yama"
+  "Patch Tuesday": "Patch Tuesday"
+  "malware": "kötü amaçlı yazılım"
+  "ransomware": "fidye yazılımı"
+  "threat actor": "tehdit aktörü"
+  "attack surface": "saldırı yüzeyi"
+  "legacy code": "eski (legacy) kod"
+  # synthetic media / AI law (added 2026-09-08)
+  # No.51 shipped "derin sahte ve yapay zeka uyuşmazlıkları" — a word-for-word calque of
+  # "deepfake" left as a BARE ADJECTIVE with no noun, then coordinated with a noun. Turkish
+  # cannot join those, and Turkish tech media uses the loanword anyway (it appears 21 times
+  # elsewhere in the archive). Nothing pinned the term, so the model invented a translation.
+  "deepfake": "deepfake"
+  "deepfakes": "deepfake içerikler"
+  "deepfake video": "deepfake video"
+  "synthetic media": "sentetik medya"
+  "digital replica": "dijital kopya"
+  "digital replicas": "dijital kopyalar"
+  "algorithmic price discrimination": "algoritmik fiyat ayrımcılığı"
+  # signal processing / statistics (added 2026-09-12)
+  # No.55 rendered "Dynamic Coupling Index" as "Dinamik EŞLEŞME Endeksi". Eşleşme means
+  # matching or pairing; coupling between signals is "bağlaşım".
+  "coupling": "bağlaşım"
+  "dynamic coupling": "dinamik bağlaşım"
+  "correlation": "korelasyon"
+  "time series": "zaman serisi"
+  "heterogeneous": "heterojen"
+  "observability": "gözlemlenebilirlik"
+  # research / ML (added 2026-07-23)
+  "execution graph": "yürütme grafiği"
+  "execution graphs": "yürütme grafikleri"
+  "power-seeking": "güç arayışı"
+  "specification gaming": "kural istismarı (specification gaming)"
+  "embodied AI": "bedenli yapay zeka"
+  "embodied intelligence": "bedenli zeka"
+  "batch": "kesikli"
+  "volatile": "değişken"
+  # manufacturing / hardware
+  "3D printing": "3D baskı"
+  "3D-printed": "3D baskılı"
+  "3D printed": "3D baskılı"
+  "contact lens": "kontakt lens"

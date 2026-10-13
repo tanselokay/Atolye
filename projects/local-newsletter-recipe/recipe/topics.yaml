@@ -1,0 +1,339 @@
+# AiPulse — DevWatch Digest topics.
+#
+# Each topic feeds one newsletter PILLAR, is tagged with the reader AUDIENCES it
+# serves (designers / engineers / youth / everyone), and names the DEVONagent
+# `search_set` whose results import under it. Sets here are the REAL existing
+# dev_* sets (run `scripts/devonagent_run_set --list`). Query dialect is
+# DEVONagent-safe: plain keywords and OR/NEAR only.
+#
+# NOTE: the morning import currently hardcodes topic "ai_rss_sources"
+# (devonagent_import_results.applescript). Until that is changed to map each set
+# to its topic below, the daily digest will NOT split into these pillars.
+
+topics:
+  # --- engine room (existing, unchanged): source/feed discovery ---------------
+  - name: ai_rss_sources
+    enabled: true
+    description: "Find high-quality people, blogs, newsletters, and RSS feeds about local LLMs, RAG, and embeddings."
+    query: "local LLM RAG embeddings blogs RSS"
+    mode: people_resources
+    schedule: manual
+    retention_days: 90
+    freshness_window: 30d
+    ranking:
+      authority: 45
+      relevance: 30
+      freshness: 15
+      rss_available: 10
+    report:
+      format: markdown
+      email: false
+
+  # --- Pillar: The Pulse — what genuinely moved this cycle ---------------------
+  - name: pulse_signal
+    enabled: true
+    pillar: pulse
+    audiences: [everyone]
+    search_set: dev_web_general
+    description: "The few genuinely important AI moves this cycle — releases, research, policy — each with a plain 'why it matters to you'."
+    query: "artificial intelligence major release OR breakthrough OR research OR policy"
+    mode: news_digest
+    schedule: manual
+    freshness_window: 10d
+    ranking:
+      authority: 40
+      relevance: 35
+      freshness: 25
+
+  # --- Pillar: AI at Work — profession spotlight (readiness) -------------------
+  - name: ai_at_work_engineering
+    enabled: true
+    pillar: profession
+    audiences: [engineers]
+    search_set: dev_ai_engineering
+    description: "How AI is reshaping engineering (software, mechanical, civil, electrical) — practice, tooling, durable skills."
+    query: "artificial intelligence engineers OR engineering software OR hardware workflow"
+    mode: profession_readiness
+    schedule: manual
+    freshness_window: 45d
+    ranking:
+      authority: 35
+      relevance: 45
+      freshness: 20
+
+  - name: ai_at_work_design
+    enabled: true
+    pillar: profession
+    audiences: [designers]
+    # Existing set is parametric/generative design — narrower than the full
+    # designer audience (UX/graphic/product). A broader dev_ai_design set later
+    # would widen this.
+    search_set: dev_parametric_design
+    description: "How AI is reshaping design work — starting from computational/parametric design; new tools and workflows."
+    query: "artificial intelligence design OR designers tools OR workflow future of design"
+    mode: profession_readiness
+    schedule: manual
+    freshness_window: 45d
+    ranking:
+      authority: 35
+      relevance: 45
+      freshness: 20
+
+  # --- Pillar: Career Compass (youth / anyone re-skilling) --------------------
+  - name: career_compass
+    enabled: true
+    pillar: career
+    audiences: [youth, everyone]
+    search_set: dev_web_deep
+    description: "Emerging AI-era roles, durable skills, and 'do what you love and stay relevant' — growing vs fading fields, what to study."
+    query: "artificial intelligence careers OR jobs future skills students what to study"
+    mode: career_compass
+    schedule: manual
+    freshness_window: 90d
+    ranking:
+      authority: 40
+      relevance: 40
+      freshness: 20
+
+  # --- Pillar: Building Blocks — progressive explainers -----------------------
+  - name: building_blocks
+    enabled: true
+    pillar: explainer
+    audiences: [everyone, youth]
+    search_set: dev_web_documents
+    description: "Clear, foundational explainers that build on each other — one concept per issue, referencing earlier ones. Evergreen, authority-first."
+    query: "artificial intelligence explained OR fundamentals OR tutorial beginners concepts"
+    mode: explainer
+    schedule: manual
+    freshness_window: 365d
+    ranking:
+      authority: 55
+      relevance: 35
+      freshness: 10
+
+  # --- Pillar: Global Lens — per-country worldwide coverage --------------------
+  # One topic per country/region, ALL feeding the single "global" pillar (Küresel
+  # Bakış). The country distinction lives in the DEVONagent SET (which sites/engines/
+  # language it scans), not the query — so each query is written in the country's own
+  # language (or English for English-market sets), and the pipeline translates every
+  # result to Turkish (foreign-language INPUT is safe; only foreign OUTPUT needs a QA
+  # gate). See docs/global_search_sets.md for the exact dev_global_* sets to build in
+  # DEVONagent. A country stays `enabled: false` until its set exists in the app —
+  # flip it to true the moment you create the set (China's already exists).
+
+  # China — the one existing, healthy set (~2-6 items/day). Kept as `global_lens` so
+  # scripts/aipulse_collect's "AiPulse: Global" -> global_lens mapping is unbroken.
+  - name: global_lens
+    enabled: true
+    pillar: global
+    audiences: [everyone]
+    search_set: dev_chinese_AI_Search
+    description: "China AI developments beyond the usual Western sources, translated to Turkish."
+    query: "人工智能 OR 大模型 OR 生成式AI OR AI研究 OR 发布"
+    mode: news_digest
+    schedule: manual
+    freshness_window: 21d
+    ranking:
+      authority: 40
+      relevance: 40
+      freshness: 20
+
+  # -- Local-language sets (query in the native language; set scans local sources) --
+  - name: global_jp
+    enabled: true   # dev_global_jp built (JP sites) + scheduled 04:30 in DEVONagent, 2026-07-31
+    pillar: global
+    audiences: [everyone]
+    search_set: dev_global_jp
+    description: "Japan AI developments (native-language sources), translated to Turkish."
+    query: "人工知能 OR 生成AI OR 大規模言語モデル OR AI研究 OR リリース"
+    mode: news_digest
+    schedule: manual
+    freshness_window: 21d
+    ranking:
+      authority: 40
+      relevance: 40
+      freshness: 20
+
+  - name: global_kr
+    enabled: true   # dev_global_kr built (KR sites) + scheduled in DEVONagent, 2026-07-31
+    pillar: global
+    audiences: [everyone]
+    search_set: dev_global_kr
+    description: "South Korea AI developments (native-language sources), translated to Turkish."
+    query: "인공지능 OR 생성형 AI OR 대규모 언어 모델 OR AI 연구 OR 출시"
+    mode: news_digest
+    schedule: manual
+    freshness_window: 21d
+    ranking:
+      authority: 40
+      relevance: 40
+      freshness: 20
+
+  - name: global_fr
+    enabled: true   # dev_global_fr built (FR sites) + scheduled in DEVONagent, 2026-07-31
+    pillar: global
+    audiences: [everyone]
+    search_set: dev_global_fr
+    description: "France/Francophone AI developments (native-language sources), translated to Turkish."
+    query: "intelligence artificielle OR IA générative OR modèle de langage OR recherche OR sortie"
+    mode: news_digest
+    schedule: manual
+    freshness_window: 21d
+    ranking:
+      authority: 40
+      relevance: 40
+      freshness: 20
+
+  - name: global_es
+    enabled: true   # dev_global_es built (ES sites) + scheduled in DEVONagent, 2026-07-31
+    pillar: global
+    audiences: [everyone]
+    search_set: dev_global_es
+    description: "Spain/Hispanophone AI developments (native-language sources), translated to Turkish."
+    query: "inteligencia artificial OR IA generativa OR modelo de lenguaje OR investigación OR lanzamiento"
+    mode: news_digest
+    schedule: manual
+    freshness_window: 21d
+    ranking:
+      authority: 40
+      relevance: 40
+      freshness: 20
+
+  - name: global_gulf
+    enabled: true   # dev_global_gulf built (Arabic sites) + scheduled in DEVONagent, 2026-07-31
+    pillar: global
+    audiences: [everyone]
+    search_set: dev_global_gulf
+    description: "Gulf/Arabic-world AI developments (native-language sources), translated to Turkish."
+    query: "الذكاء الاصطناعي OR الذكاء الاصطناعي التوليدي OR نموذج لغوي كبير OR بحث OR إطلاق"
+    mode: news_digest
+    schedule: manual
+    freshness_window: 21d
+    ranking:
+      authority: 40
+      relevance: 40
+      freshness: 20
+
+  # -- English site-targeted sets (English query; set scans that country's sites) ---
+  - name: global_uk
+    enabled: false   # activate once dev_global_uk exists in DEVONagent
+    pillar: global
+    audiences: [everyone]
+    search_set: dev_global_uk
+    description: "UK AI developments (UK site-targeted set), translated to Turkish."
+    query: "artificial intelligence OR generative AI OR large language model OR research OR release"
+    mode: news_digest
+    schedule: manual
+    freshness_window: 21d
+    ranking:
+      authority: 40
+      relevance: 40
+      freshness: 20
+
+  - name: global_ca
+    enabled: false   # activate once dev_global_ca exists in DEVONagent
+    pillar: global
+    audiences: [everyone]
+    search_set: dev_global_ca
+    description: "Canada AI developments (Canada site-targeted set), translated to Turkish."
+    query: "artificial intelligence OR generative AI OR large language model OR research OR release"
+    mode: news_digest
+    schedule: manual
+    freshness_window: 21d
+    ranking:
+      authority: 40
+      relevance: 40
+      freshness: 20
+
+  - name: global_au
+    enabled: false   # activate once dev_global_au exists in DEVONagent
+    pillar: global
+    audiences: [everyone]
+    search_set: dev_global_au
+    description: "Australia AI developments (Australia site-targeted set), translated to Turkish."
+    query: "artificial intelligence OR generative AI OR large language model OR research OR release"
+    mode: news_digest
+    schedule: manual
+    freshness_window: 21d
+    ranking:
+      authority: 40
+      relevance: 40
+      freshness: 20
+
+  - name: global_sg
+    enabled: false   # activate once dev_global_sg exists in DEVONagent
+    pillar: global
+    audiences: [everyone]
+    search_set: dev_global_sg
+    description: "Singapore AI developments (Singapore site-targeted set), translated to Turkish."
+    query: "artificial intelligence OR generative AI OR large language model OR research OR release"
+    mode: news_digest
+    schedule: manual
+    freshness_window: 21d
+    ranking:
+      authority: 40
+      relevance: 40
+      freshness: 20
+
+  - name: global_uae
+    enabled: false   # activate once dev_global_uae exists in DEVONagent
+    pillar: global
+    audiences: [everyone]
+    search_set: dev_global_uae
+    description: "UAE AI developments (UAE English site-targeted set), translated to Turkish."
+    query: "artificial intelligence OR generative AI OR large language model OR research OR release"
+    mode: news_digest
+    schedule: manual
+    freshness_window: 21d
+    ranking:
+      authority: 40
+      relevance: 40
+      freshness: 20
+
+  # --- Pillar: Frontier — deeper ideas (uses existing set) --------------------
+  - name: frontier_ideas
+    enabled: true
+    pillar: frontier
+    audiences: [engineers, everyone]
+    search_set: dev_neuro_symbolic
+    description: "Frontier directions (e.g. neuro-symbolic) — where the field may head next, for the curious and technical."
+    query: "neuro symbolic AI OR reasoning OR hybrid architecture research"
+    mode: explainer
+    schedule: manual
+    freshness_window: 180d
+    ranking:
+      authority: 55
+      relevance: 35
+      freshness: 10
+
+  # --- Pillar: Watch & See — multimedia (NO SET YET) --------------------------
+  - name: watch_and_see
+    enabled: true
+    pillar: multimedia
+    audiences: [everyone]
+    search_set: ""   # gap: needs a dev_ai_media set (YouTube/Vimeo/visual-explainer sites)
+    description: "Best AI videos, infographics, interactive demos, visualizations. Needs a dedicated media search set before it can run."
+    query: "artificial intelligence video OR explainer OR infographic OR visualization OR interactive demo"
+    mode: multimedia
+    schedule: manual
+    freshness_window: 90d
+    ranking:
+      authority: 30
+      relevance: 45
+      freshness: 25
+
+  # --- Pillar: Grin & Think — humor (NO SET YET) ------------------------------
+  - name: grin_and_think
+    enabled: false
+    pillar: humor
+    audiences: [everyone]
+    search_set: ""   # gap: needs a dev_ai_humor set (curated comic/cartoon sources)
+    description: "High-quality AI cartoons, comics, satire — funny AND thought-provoking. Needs a curated humor search set before it can run."
+    query: "artificial intelligence cartoon OR comic OR satire OR humor"
+    mode: humor
+    schedule: manual
+    freshness_window: 60d
+    ranking:
+      authority: 45
+      relevance: 45
+      freshness: 10

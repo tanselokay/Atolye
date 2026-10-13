@@ -20,6 +20,7 @@ stated otherwise.*
 |---|---|---|
 | [`yerel-anlamsal-arama`](projects/yerel-anlamsal-arama) | Belgeleri **anlamıyla** bul (.docx/.pptx/.xmind), yerel ve özel | Sayı 1 |
 | [`yerel-canli-altyazi`](projects/yerel-canli-altyazi) | İki dilli bir toplantıya **canlı altyazı** ve toplantı notu, yerel ve özel | Sayı 2 |
+| [`local-newsletter-recipe`](projects/local-newsletter-recipe) | Yerel yapay zekâyla **kendi haber bültenini** kur — tarif, promptlar ve her parçayı kurduran builder'lar | Sayı 3 |
 
 Her proje kendi dizininde kendi `README.md` ve `requirements.txt` dosyasıyla, tek başına
 çalıştırılabilir. *Each project is self-contained in its own folder with its own README and

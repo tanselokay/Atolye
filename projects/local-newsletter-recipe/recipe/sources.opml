@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="1.0">
+  <head>
+    <title>AiPulse feeds</title>
+  </head>
+  <body>
+    <outline text="AiPulse: Pulse" title="AiPulse: Pulse">
+      <outline type="rss" text="TechCrunch" title="TechCrunch" xmlUrl="https://techcrunch.com/feed/" htmlUrl="https://techcrunch.com"/>
+      <outline type="rss" text="The Verge" title="The Verge" xmlUrl="https://www.theverge.com/rss/index.xml" htmlUrl="https://www.theverge.com"/>
+      <outline type="rss" text="Ars Technica" title="Ars Technica" xmlUrl="https://feeds.arstechnica.com/arstechnica/index" htmlUrl="https://arstechnica.com"/>
+      <outline type="rss" text="WIRED AI" title="WIRED AI" xmlUrl="https://www.wired.com/feed/tag/ai/latest/rss" htmlUrl="https://www.wired.com/tag/ai"/>
+      <outline type="rss" text="ScienceDaily AI" title="ScienceDaily AI" xmlUrl="https://www.sciencedaily.com/rss/computers_math/artificial_intelligence.xml" htmlUrl="https://www.sciencedaily.com"/>
+      <outline type="rss" text="The Atlantic" title="The Atlantic" xmlUrl="https://www.theatlantic.com/feed/all/" htmlUrl="https://www.theatlantic.com"/>
+      <outline type="rss" text="MIT Technology Review" title="MIT Technology Review" xmlUrl="https://www.technologyreview.com/feed/" htmlUrl="https://www.technologyreview.com"/>
+      <outline type="rss" text="VentureBeat AI" title="VentureBeat AI" xmlUrl="https://venturebeat.com/category/ai/feed/" htmlUrl="https://venturebeat.com/category/ai"/>
+      <outline type="rss" text="TechXplore - ML &amp; AI" title="TechXplore - ML &amp; AI" xmlUrl="https://techxplore.com/rss-feed/machine-learning-ai-news/" htmlUrl="https://techxplore.com"/>
+    </outline>
+    <outline text="AiPulse: Engineering" title="AiPulse: Engineering">
+      <outline type="rss" text="MIT News - AI" title="MIT News - AI" xmlUrl="https://news.mit.edu/rss/topic/artificial-intelligence2" htmlUrl="https://news.mit.edu"/>
+      <outline type="rss" text="IEEE Spectrum AI" title="IEEE Spectrum AI" xmlUrl="https://spectrum.ieee.org/feeds/topic/artificial-intelligence.rss" htmlUrl="https://spectrum.ieee.org"/>
+      <!-- TechXplore lives under Pulse now: the site-wide /rss-feed/ firehose and
+           the Engineering / Energy & Green Tech / Robotics category feeds were
+           retired 2026-08-04. Five feeds supplied ~173 items for 6 published; the
+           firehose is a superset of the categories. Only the ML & AI category is
+           kept, and it is grouped with Pulse. -->
+      <outline type="rss" text="NVIDIA Blog" title="NVIDIA Blog" xmlUrl="https://blogs.nvidia.com/feed/" htmlUrl="https://blogs.nvidia.com"/>
+      <outline type="rss" text="Siemens Software Blog" title="Siemens Software Blog" xmlUrl="https://blogs.sw.siemens.com/feed/" htmlUrl="https://blogs.sw.siemens.com"/>
+    </outline>
+    <outline text="AiPulse: Design" title="AiPulse: Design">
+      <outline type="rss" text="Nielsen Norman Group" title="Nielsen Norman Group" xmlUrl="https://www.nngroup.com/feed/rss/" htmlUrl="https://www.nngroup.com"/>
+      <outline type="rss" text="Parametric Architecture" title="Parametric Architecture" xmlUrl="https://parametric-architecture.com/feed/" htmlUrl="https://parametric-architecture.com"/>
+      <outline type="rss" text="Rhino News" title="Rhino News" xmlUrl="https://blog.rhino3d.com/feeds/posts/default" htmlUrl="https://blog.rhino3d.com"/>
+      <outline type="rss" text="Core77" title="Core77" xmlUrl="https://www.core77.com/feed" htmlUrl="https://www.core77.com"/>
+      <outline type="rss" text="UX Collective" title="UX Collective" xmlUrl="https://uxdesign.cc/feed" htmlUrl="https://uxdesign.cc"/>
+    </outline>
+    <outline text="AiPulse: Global" title="AiPulse: Global">
+      <outline type="rss" text="36Kr" title="36Kr" xmlUrl="https://36kr.com/feed" htmlUrl="https://36kr.com"/>
+      <outline type="rss" text="TechNode" title="TechNode" xmlUrl="https://technode.com/feed/" htmlUrl="https://technode.com"/>
+    </outline>
+    <outline text="AiPulse: Frontier" title="AiPulse: Frontier">
+      <outline type="rss" text="Hugging Face Blog" title="Hugging Face Blog" xmlUrl="https://huggingface.co/blog/feed.xml" htmlUrl="https://huggingface.co/blog"/>
+      <outline type="rss" text="The Gradient" title="The Gradient" xmlUrl="https://thegradient.pub/rss/" htmlUrl="https://thegradient.pub"/>
+      <outline type="rss" text="Google DeepMind Blog" title="Google DeepMind Blog" xmlUrl="https://deepmind.google/blog/rss.xml" htmlUrl="https://deepmind.google/blog"/>
+      <outline type="rss" text="Google Research Blog" title="Google Research Blog" xmlUrl="https://research.google/blog/rss/" htmlUrl="https://research.google/blog"/>
+      <outline type="rss" text="Quanta Magazine" title="Quanta Magazine" xmlUrl="https://api.quantamagazine.org/feed/" htmlUrl="https://www.quantamagazine.org"/>
+      <outline type="rss" text="Import AI (Jack Clark)" title="Import AI (Jack Clark)" xmlUrl="https://importai.substack.com/feed" htmlUrl="https://importai.substack.com"/>
+      <outline type="rss" text="Berkeley AI Research (BAIR)" title="Berkeley AI Research (BAIR)" xmlUrl="https://bair.berkeley.edu/blog/feed.xml" htmlUrl="https://bair.berkeley.edu/blog"/>
+    </outline>
+    <outline text="AiPulse: Explainers" title="AiPulse: Explainers">
+      <outline type="rss" text="Distill" title="Distill" xmlUrl="https://distill.pub/rss.xml" htmlUrl="https://distill.pub"/>
+      <outline type="rss" text="colah's blog" title="colah's blog" xmlUrl="https://colah.github.io/rss.xml" htmlUrl="https://colah.github.io"/>
+      <outline type="rss" text="Lil'Log (Lilian Weng)" title="Lil'Log (Lilian Weng)" xmlUrl="https://lilianweng.github.io/index.xml" htmlUrl="https://lilianweng.github.io"/>
+      <outline type="rss" text="Jay Alammar" title="Jay Alammar" xmlUrl="https://jalammar.github.io/feed.xml" htmlUrl="https://jalammar.github.io"/>
+      <outline type="rss" text="Simon Willison" title="Simon Willison" xmlUrl="https://simonwillison.net/atom/everything/" htmlUrl="https://simonwillison.net"/>
+    </outline>
+    <outline text="AiPulse: Humor" title="AiPulse: Humor">
+      <outline type="rss" text="xkcd" title="xkcd" xmlUrl="https://xkcd.com/rss.xml" htmlUrl="https://xkcd.com"/>
+    </outline>
+  </body>
+</opml>
