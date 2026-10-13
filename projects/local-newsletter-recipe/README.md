@@ -82,5 +82,3 @@ modeller yazıyor — farklı bir yapay zekâ, farklı bir iş. Her editoryal se
   **CC-BY-4.0** (`LICENSE-DOCS.md`).
 - Üstüne bir şey kurarsan lütfen künye düş / if you build on this, please credit:
   **Tansel Okay ([demle.me](https://demle.me)), yapay zekâ kodlama ortağı Claude ile kuruldu.**
-
-Kendine ait bir şey kur. Bütün mesele bu. · *Build something that's yours. That's the whole point.*
