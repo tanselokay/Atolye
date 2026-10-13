@@ -8,11 +8,11 @@
 
 Bu, "tek tıkla demle.me" kurulumu **değil**. Paylaştığım şey **yöntem**: promptlar, içerik
 taksonomisi, kaynak listesi ve her parçayı senin kurulumuna göre kurduran **builder prompt**'lar —
-kendi küçük, dürüst, yerel bülteninı kurabilesin diye.
+kendi küçük, yerel bülteninı kurabilesin diye.
 
 *This is not a one-click clone of demle.me. It's the **method** — the prompts, the content
 taxonomy, the source list, and **builder prompts** you paste into your own AI — so you can build
-your own small, honest, local-first publication, shaped around your topic, language and hardware.*
+your own small, local-first publication, shaped around your topic, language and hardware.*
 
 ---
 
