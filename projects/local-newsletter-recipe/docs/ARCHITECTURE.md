@@ -1,255 +1,75 @@
-# DevWatch Architecture
+# Mimari — parçalar nasıl birleşiyor / Architecture — how the pieces fit
 
-DevWatch is an editorial operating system for technical knowledge.
+Bu, bir haber üreticisi değil, **insan-önderliğinde bir editoryal boru hattıdır**: yerel bir model
+gürültülü bir akışı okunur adaylara indirir, bir insan neyin yayımlanacağına karar verir, sonuç
+statik sayfalar ve bir RSS akışı olarak ucuza yayımlanır. Bülten, bu akışın bir çıktısıdır.
 
-It is not primarily a newsletter generator. The newsletter is one possible output of a broader editorial workflow whose purpose is to help a human editor discover, validate, understand, and communicate important technical developments.
+_This is not a content generator; it's a **human-led editorial pipeline**: a local model narrows a
+noisy stream to readable candidates, a human decides what gets published, and the result ships cheaply
+as static pages and an RSS feed. The newsletter is one output of that flow._
 
-## Mission
-
-DevWatch helps a human editor turn noisy technical information into trustworthy editorial intelligence.
-
-The system should produce useful daily signals first. Selected signals can then be expanded into deeper, peer-reviewed editorial packages and eventually newsletter-ready material.
-
-## Design Philosophy
-
-### Human editor first
-
-DevWatch does not replace the editor. It gives the editor better candidates, better context, better questions, and better review artifacts.
-
-The human editor remains the final authority for publication decisions.
-
-### Reliability over intelligence
-
-DevWatch does not optimize for using the single most intelligent model everywhere. It optimizes for editorial reliability.
-
-A smaller, more specialized model that performs one role consistently can be more valuable than a larger general model that performs many roles inconsistently.
-
-### Role-based agents
-
-DevWatch prefers specialized roles over one general-purpose model.
-
-Examples:
-
-- Translator
-- Signal Ranker
-- Claim Extractor
-- Technical Peer Reviewer
-- Skeptical Reviewer
-- Research Radar
-- Editorial Rewriter
-- Newsletter Writer
-
-Each role can be benchmarked independently.
-
-### Replaceable models
-
-Roles are stable. Models are replaceable.
-
-A model may serve multiple roles if it proves strong enough in benchmarks. Deployment should remain practical because local memory and storage are limited.
-
-### Visible and overrideable decisions
-
-Nothing important should happen silently.
-
-Every recommendation should be explainable. Every model decision should be visible. The human editor can override any automated decision.
-
-## Two Editorial Workflows
-
-DevWatch has two related but distinct workflows.
-
-### Daily Discovery Workflow
-
-This workflow runs every day and produces a daily editorial intelligence brief.
+## Boru hattı / The pipeline
 
 ```text
-Sources / DEVONagent / RSS / Searches
-        ↓
-Discovery
-        ↓
-Signals
-        ↓
-Ranking and grouping
-        ↓
-Daily Brief
-        ↓
-Human selection
+Kaynaklar (feed'ler, aramalar)   Sources (feeds, searches)
+        ↓  topla / collect
+Günün havuzu                     The day's pool
+        ↓  oku & ele / read & shortlist   (Qwen2.5-32B)
+Adaylar                          Candidates
+        ↓  taslak yaz / draft             (Qwen3.8-27B: başlık, "neden önemli", kritik)
+Taslak sayı                      Draft issue
+        ↓  İNSAN / HUMAN                  (seç, düzelt, kaynakla denetle / pick, edit, verify)
+Onaylanan sayı                   Approved issue
+        ↓  yayınla / publish              (statik HTML + RSS → sunucu / server)
+Canlı sayfa + akış               Live page + feed
+        ↓  sağlıklı tut / keep healthy    (yedek, ölü link onarımı, "yayınlandı mı?" kontrolü)
 ```
 
-The daily brief should be useful even before the deeper architecture is complete. It should continue operating at the current implemented capability level while the system evolves.
+Her aşama ayrı ve gözlemlenebilir: bir adım bozulursa onu tek başına düzeltir ya da yeniden
+çalıştırabilirsin, komşularını yıkmadan.
 
-The daily brief should include:
+_Each stage is separate and observable: if one breaks you can fix or re-run it alone, without
+toppling its neighbours._
 
-- candidate ideas and news signals
-- important sources
-- why each item may matter
-- suggested follow-up topics
-- early risk or quality notes where available
+## Tasarım seçimleri / Design choices
 
-### Deep Editorial Workflow
+**Önce insan / Human first.** Sistem editörün yerini almaz; ona daha iyi adaylar, daha iyi bağlam ve
+daha iyi inceleme malzemesi verir. Yayın kararının son mercii her zaman insandır.
+_The system doesn't replace the editor; it gives better candidates and better review material. The
+human is always the final authority on what publishes._
 
-This workflow starts when the human editor selects a topic, document, or signal for deeper work.
+**Zekâdan önce güvenilirlik / Reliability over raw intelligence.** Amaç her yerde en zeki modeli
+kullanmak değil, editoryal güvenilirliktir. Bir işi tutarlı yapan küçük, yerleşik bir model, çok iş
+yapıp hepsini tutarsız yapan büyük bir modelden değerlidir.
+_The goal isn't the smartest model everywhere; it's editorial reliability. A small resident model that
+does one job consistently beats a large one that does many inconsistently._
 
-```text
-Selected signal/topic
-        ↓
-Source collection
-        ↓
-Translation if needed
-        ↓
-Claim extraction
-        ↓
-Technical Peer Review
-        ↓
-Skeptical Review / Research Radar
-        ↓
-Editorial Rewrite
-        ↓
-Newsletter-ready brief
-        ↓
-Human approval
-        ↓
-Publication or archive
-```
+**Role göre küçük modeller / Small models, by role.** Okuma/eleme, taslak, çeviri, tekilleştirme,
+kapak — her rol ayrı değerlendirilebilir ve ayrı değiştirilebilir. Roller kalıcı, modeller
+değiştirilebilir (bkz. `MODELS.md`). Bir model yeterince iyiyse birden çok rolü üstlenebilir; bu, tek
+GPU'da bellek tasarrufu demektir.
+_Reading/shortlisting, drafting, translation, dedup, cover — each role is benchmarked and swapped on
+its own. Roles are stable, models are replaceable (see `MODELS.md`). One model may serve several roles
+if it's good enough — which saves memory on a single GPU._
 
-## Core Roles
+**Görünür ve geçersiz kılınabilir kararlar / Visible, overrideable decisions.** Önemli hiçbir şey
+sessizce olmamalı. Her öneri açıklanabilir, her model kararı görünür, ve insan her otomatik kararı
+geçersiz kılabilir.
+_Nothing important happens silently. Every suggestion is explainable, every model decision is visible,
+and the human can override any of them._
 
-### Signal Ranker
+## Yayınlama — neden statik / Publishing — why static
 
-Ranks newly collected items and produces candidate editorial signals.
+Çıktı statik HTML + bir RSS akışıdır, bir sunucuya `rsync`'lenir. Veritabanı yok, çalışan uygulama
+yok, güvenlik yaması gerektiren bir sunucu tarafı yok — sadece dosyalar. Ucuz, hızlı, taşınması
+kolay ve yıllarca ayakta kalır. Dinamik olan tek şey (dil değiştirme, paylaşım) sayfanın içinde,
+tarayıcıda çalışır.
 
-Output should explain why each signal matters, not only summarize it.
+_The output is static HTML + an RSS feed, `rsync`'d to a server. No database, no running app, no
+server-side to patch — just files. Cheap, fast, portable, and it survives for years. The only dynamic
+bits (language toggle, share) run inside the page, in the browser._
 
-### Translator
-
-Translates source material when needed. Translation is not editorial validation.
-
-### Claim Extractor
-
-Extracts concrete technical claims from a source document.
-
-A claim should be reviewable, falsifiable where possible, and linked to source evidence.
-
-### Technical Peer Reviewer
-
-Acts as a technical referee before publication.
-
-The reviewer challenges claims instead of merely summarizing them. It should identify:
-
-- unsupported claims
-- overgeneralizations
-- hidden assumptions
-- missing context
-- counterexamples
-- misleading definitions
-- weak evidence
-
-The reviewer should produce a verdict such as `accept`, `minor_revision`, `major_revision`, or `reject`, but this is advisory. The human editor decides.
-
-### Skeptical Reviewer
-
-A more aggressive reviewer role. Its purpose is to find what a normal reviewer may miss.
-
-This role is especially useful for detecting:
-
-- overly confident claims
-- definition scope errors
-- missing evidence
-- internal inconsistencies
-- hidden marketing framing
-
-### Research Radar
-
-Research Radar does not replace web search. It suggests what should be searched or verified.
-
-Initial mode:
-
-- produce search questions
-- propose keywords
-- identify likely counterexamples
-- identify source types worth checking
-
-Future mode:
-
-- trigger DEVONagent template searches programmatically
-- collect results through the same ingestion mechanism
-- add high-quality sources and feeds to curated lists
-
-### Editorial Rewriter
-
-Uses peer review findings to turn a selected item into a safer editorial brief.
-
-It should not hide uncertainty. It should incorporate reviewer cautions and safer wording.
-
-### Newsletter Writer
-
-Composes selected and approved editorial packages into a newsletter.
-
-Newsletter writing is downstream from validation.
-
-## DEVONagent Integration
-
-DEVONagent is a major discovery and follow-up research component.
-
-Future integration should support template searches such as:
-
-- topic
-- time range
-- selected plugins
-- preferred source domains
-- result count
-- crawl depth
-
-Results should flow back into DevWatch as sources/signals rather than as unstructured notes.
-
-As searches continue, DevWatch should accumulate:
-
-- high-quality RSS feeds
-- trusted source domains
-- useful crawl targets
-- low-quality or noisy sources to avoid
-
-## Model Strategy
-
-DevWatch uses a role-based model registry.
-
-The system should support:
-
-- primary model per role
-- optional secondary/skeptical reviewer
-- benchmark score per role
-- manual override
-
-A model can be reused across roles if it performs well enough and saves memory/storage.
-
-The current working direction is to use at least two reviewers for deeper items:
-
-- a balanced technical reviewer
-- a skeptical reviewer
-
-The exact model names are not architectural constants. They are deployment choices.
-
-## Prompt Strategy
-
-Prompts should be moved out of Python code and versioned as first-class project assets.
-
-Planned structure:
-
-```text
-prompts/
-    technical_peer_review.md
-    technical_peer_review_glm.md
-    technical_peer_review_gptoss.md
-    research_radar.md
-    editorial_rewrite.md
-    newsletter_writer.md
-```
-
-Model-specific prompts are allowed when a model needs stricter language or JSON instructions.
-
-## Guiding Product Principle
-
-DevWatch's first production output is a daily editorial intelligence brief for the human editor.
-
-The long-term output can include newsletters, technical briefs, research notes, and benchmark reports.
-
-The product of DevWatch is not merely content. Its product is editorial confidence.
+> İnsanı araya koyan tasarım `CURATION-APP-DESIGN.md`'de; neyin hangi bölüme girdiği
+> `TAXONOMY.md`'de; her şeyin uğruna kurulduğu kurallar `PRINCIPLES.md`'de.
+> _The human-in-the-loop design is in `CURATION-APP-DESIGN.md`; how stories are filed is in
+> `TAXONOMY.md`; the rules it's all built toward are in `PRINCIPLES.md`._

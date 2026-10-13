@@ -58,7 +58,7 @@ first light of morning. You can give yours your own.*
 - **`builders/`** — her parça için bir prompt; yapay zekâna yapıştır, kendi sürümünü kursun.
 - **`prompts/`** — modellerin çalıştırdığı gerçek promptlar (başlık, kritik, çeviri, kapak).
 - **`docs/`** — mimari, ilkeler, içerik taksonomisi (ölçümleri ve çıkmaz sokaklarıyla),
-  kürasyon uygulaması tasarım notları, boru hattı tasarımı.
+  kürasyon uygulaması tasarım notları.
 - **`recipe/`** — kaynak listesi ve konu/sözlük ayarları, başlangıç örneği olarak.
 
 Burada **olmayan**: çalışır haldeki tam boru hattı ve sunucularıma bağlı hiçbir şey.

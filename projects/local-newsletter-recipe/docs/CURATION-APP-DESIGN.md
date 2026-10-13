@@ -1,89 +1,70 @@
-# DevWatch Curation App — Design (for review)
+# Kürasyon uygulaması — tasarım / Curation app — design
 
-## Goal
-A small **local web app** to curate the daily newsletter: review auto-drafted
-Turkish titles/blurbs for the day's candidate articles (from **both** the
-DEVONagent and DEVONthink tracks), edit them, choose which go in, and **publish**
-to demle.me (+ optional email). Every edit is captured as fine-tuning data.
+İnsanı araya koyan parça budur: günün adaylarını otomatik yazılmış taslaklarıyla gösteren, onları
+düzeltip hangilerinin gireceğini seçtiğin ve tek tuşla yayımladığın **küçük, yerel bir web
+uygulaması**. Yönlendirici ilke: **otomasyon taslağı yazar, sen onaylarsın, sonra yayımlanır.** Model
+çıktısı bir *taslaktır*, asla görülmeden yayımlanmaz — uydurma ayrıntı riskinin (makul görünen ama
+yanlış bir ayrıntı) tek gerçek cevabı budur.
 
-Guiding principle: **automation drafts, you approve, then it ships.** The grounded
-120B output is a *draft*, never published unseen — which is the answer to the
-hallucination risk we hit (embellished specifics, "AçıkAI", etc.).
+_This is the human-in-the-loop piece: a small **local web app** that shows the day's candidates with
+their auto-drafted titles/blurbs, lets you edit them, choose which go in, and **publish** in one click.
+Guiding principle: **automation drafts, you approve, then it ships.** The model output is a draft,
+never published unseen — the only real answer to hallucination risk (a plausible but false specific)._
 
-## Why local + reuse
-- Runs on your Mac (localhost), no new external hosting, no auth headaches.
-- Reuses the existing pipeline: `build_issue` / `generate_grounded_meta` for
-  drafts, the light template for rendering, `publish_demle` for deploy, the
-  osascript mailer for email.
+## Neden yerel / Why local
 
-## Stack (minimal, no build step)
-- **Backend:** FastAPI in the existing `.venv`, served by uvicorn on
-  `localhost:8765`. (One new dep: fastapi+uvicorn.)
-- **Frontend:** a single static HTML page + vanilla JS — no React/build. Styled
-  with the light newsletter theme so the editor *looks like* the output.
-- **Storage:** `data/curation/<date>.json` (drafts + your edits + include/order
-  state). Corpus in `data/mt_corpus/<pillar>.jsonl`.
+- Kendi makinende (localhost) çalışır — yeni dış barındırma yok, kimlik doğrulama derdi yok.
+- Mevcut boru hattını yeniden kullanır: taslak için üretim adımı, render için hafif şablon, yayın
+  için var olan dağıtım betiği.
 
-## Data flow
-1. **Prepare drafts** (heavy, once/day or on-demand button): pull today's
-   candidates from both tracks, run `generate_grounded_meta` (120B) for a
-   content-faithful Turkish title + blurb, fetch images → cache in
-   `data/curation/<date>.json`.
-2. **Curate** (browser): load the draft; edit title/blurb inline, toggle
-   include/exclude, reorder, optionally reassign pillar.
-3. **Publish**: render the curated items into the light template → `publish_demle`
-   (+ optional email) → append every edited pair to the corpus.
+_Runs on your own machine (localhost) — no new external hosting, no auth headaches. Reuses the existing
+pipeline: the draft step for drafts, the light template for rendering, the deploy step to ship._
 
-## Screens
-- **Issue editor:** header (date, item count, Prepare / Preview / Publish / Email
-  buttons). Pillar sections. Each candidate is an editable card: image, source
-  link, score, **source badge** (devonagent / devonthink), editable Turkish
-  **title**, editable **blurb**, include checkbox, drag handle.
-- **Preview:** the real newsletter HTML in an iframe.
-- **(later) Corpus stats:** pairs collected per pillar toward a fine-tune target.
+## Yığın — minimal, derleme adımı yok / Stack — minimal, no build step
 
-## API
-- `POST /api/prepare/{date}` — generate/refresh drafts (kicks off ground_meta).
-- `GET  /api/issue/{date}` — current draft/curated state.
-- `PUT  /api/item/{date}/{item_id}` — save edited title/blurb/include/order/pillar.
-- `POST /api/item/{date}/{item_id}/redraft` — regenerate one item's draft.
-- `POST /api/publish/{date}` — render + `publish_demle` (+ `email=true`). Returns URL.
-- `GET  /preview/{date}` — rendered HTML.
+- **Arka uç / Backend:** mevcut sanal ortamda bir FastAPI, localhost'ta uvicorn ile. _FastAPI in your
+  venv, served by uvicorn on localhost._
+- **Ön yüz / Frontend:** tek bir statik HTML sayfası + sade JS — React/derleme yok. Bültenin açık
+  temasıyla biçimlendirilir ki editör *çıktının göründüğü gibi* görsün. _A single static HTML page +
+  vanilla JS, styled with the newsletter theme so the editor looks like the output._
+- **Depolama / Storage:** basit dosyalar — tarih başına bir JSON (taslaklar + düzeltmelerin + dahil
+  et/sıra durumu). Veritabanı yok. _Plain files — one JSON per date. No database._
 
-## Corpus capture (fine-tune fuel)
-On publish, for each item where you changed the text, append to
-`data/mt_corpus/<pillar>.jsonl`:
-```json
-{"item_id":…, "url":"…", "source":"devonthink", "pillar":"pulse", "date":"…",
- "en_title":"…", "draft_title_tr":"…", "final_title_tr":"…",
- "draft_why_tr":"…", "final_why_tr":"…", "changed_title":true, "changed_why":true}
-```
+## Akış / Data flow
 
-## Phases
-- **MVP (Phase 1):** list today's devonthink+devonagent candidates with drafts,
-  edit title/blurb, include/exclude, Publish to demle.me, corpus capture.
-- **Phase 2:** reorder + pillar reassign, live preview iframe, email send,
-  per-item "redraft" button.
-- **Phase 3:** corpus stats dashboard + JSONL export for QLoRA.
+1. **Taslakları hazırla / Prepare drafts** (günde bir ya da istek üzerine bir düğme): günün adaylarını
+   topla, her biri için içerikten sapmayan bir başlık + "neden önemli" üret, görselleri getir, JSON'a
+   önbellekle. _Pull the day's candidates, draft a faithful title + "why it matters" for each, cache._
+2. **Küre / Curate** (tarayıcı): taslağı aç; başlık/metni yerinde düzelt, dahil et/çıkar, yeniden
+   sırala, istersen bölümünü değiştir. _Open the draft; edit title/blurb inline, toggle include, reorder._
+3. **Yayınla / Publish:** kürelenmiş öğeleri şablona render et → dağıt → düzenlediğin her çifti
+   ileride ince-ayar için sakla. _Render the curated items → deploy → keep every edited pair for later
+   fine-tuning._
 
-## Decisions (locked 2026-07-19)
-1. **Sourcing — POOL BOTH into one issue.** DEVONagent + DEVONthink candidates
-   appear together in one curated demle.me issue, each with a **source badge**.
-   Both tracks map into the pillar taxonomy already; **dedupe by final URL** so an
-   item collected on both tracks appears once (keep the higher score / prefer
-   devonthink). Implementation: pull candidates with no source filter, merge, dedupe.
-2. **Draft timing — ON-DEMAND.** A **Prepare** button runs `generate_grounded_meta`
-   (120B) over the day's candidates when you open the app (~1–2 min; show
-   progress). No ground_meta cost added to the 07:30 pipeline.
-3. **Publish — demle.me ONLY** for MVP. Email deferred to Phase 2 (the osascript
-   mailer is ready to wire in later).
-4. **Reach — LAN (phone too).** uvicorn binds `0.0.0.0:8765`; open from the Mac or
-   `http://<mac-LAN-ip>:8765` on your phone. Home LAN only (not public). Add a
-   simple shared-secret token in the URL/header since other devices can reach it.
+## Ekranlar / Screens
 
-## Notes from decisions
-- Because sources are pooled, the digest (devonagent → email @09:00) is unchanged
-  and separate; the app is a *third* consumer that can pull devonagent items too.
-- Publishing an **edited** item set means the renderer takes the curated items
-  directly (from `data/curation/<date>.json`), not a fresh `build_issue`. So the
-  render step is refactored to accept explicit items.
+- **Sayı editörü / Issue editor:** başlık çubuğu (tarih, öğe sayısı, Hazırla / Önizle / Yayınla
+  düğmeleri). Her aday düzenlenebilir bir kart: görsel, kaynak bağlantısı, skor, **kaynak rozeti**
+  (hangi toplama kanalından geldiği), düzenlenebilir başlık ve metin, dahil-et kutusu, sürükleme
+  tutamacı. _Each candidate is an editable card: image, source link, score, source badge, editable
+  title & blurb, include checkbox, drag handle._
+- **Önizleme / Preview:** gerçek bülten HTML'i bir iframe içinde. _The real newsletter HTML in an iframe._
+
+## Baştan gömülü kurallar / Rules baked in from the start
+
+- **Asla otomatik yayın / Never auto-publish.** Yayın her zaman bir insan tıklamasıyla olur.
+- **Alan bırakınca kaydet / Save per edit.** Her düzeltme anında diske yazılır; bir kaza bir saatlik
+  kürasyonu silmesin. _Every edit is written to disk immediately._
+- **Kaynakları birleştir, URL'ye göre tekilleştir / Pool sources, dedupe by URL.** Birden çok toplama
+  kanalı tek bir kürelenmiş sayıda buluşur, her biri bir kaynak rozetiyle; aynı haber iki kanalda da
+  varsa bir kez görünür. _Multiple collection tracks meet in one issue, each with a source badge;
+  dedupe by final URL._
+- **İstek üzerine hazırla / Prepare on demand.** Ağır üretim adımı sabah boru hattına maliyet eklemez;
+  uygulamayı açınca bir düğmeyle çalışır. _The heavy draft step runs on a button, not in the morning job._
+- **Yerel ağdan eriş / Reach over the LAN.** Mac'ten ya da telefondan aç (ev ağı, herkese açık değil);
+  başka cihazlar erişebildiği için URL'ye basit bir paylaşılan-gizli anahtar ekle. _Open from the Mac
+  or your phone on the home LAN; add a simple shared-secret token since other devices can reach it._
+- **Düzeltmeleri yakıt olarak sakla / Capture edits as fuel.** Metnini değiştirdiğin her öğe için
+  taslak-vs-son çiftini bir JSONL'ye ekle — ileride kendi küçük çeviri/başlık modelini eğitmek için.
+  _For each item you edited, append the draft-vs-final pair to a JSONL — to fine-tune your own small
+  model later._
